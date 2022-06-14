@@ -1,0 +1,12 @@
+<head>  
+</head>
+<body>
+    <main>
+        <p> You are logged in as <%= email %> </p>
+        <form class="product-form" action="./logoutRequest" method="POST">
+                <input type="hidden" name="sessionIdentfier" id="sessionIdentfier" value="<%= sessionIdentfier %>">   
+                <input type="hidden" name="email" id="email" value="<%= email %>">   
+                <button class="btn" type="submit">Logout</button>
+        </form>
+    </main>
+</body>
