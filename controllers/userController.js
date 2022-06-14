@@ -86,7 +86,7 @@ exports.remindPassword = async (req, res, next) => {
             const user = await User.findOne({ where: { email: email}})   
             if(user) {
                 user.resetPasswordKey = keygen.generateKey();
-                const adress = "https://whiffdev.herokuapp.com/resetPasswordForm?secret=" + user.resetPasswordKey; 
+                const adress = process.env.ADRESS + "/resetPasswordForm?secret=" + user.resetPasswordKey; 
                 const emailText = "Hello, \n \n Likely, you requested reset email. \n Link: " + adress + "\n If you didn't requested, ignore this email. \n Regards, \n Whiff Team \n \n Please do not reply this email. "
                 await user.save()
                 const result = await Messenger.messenger.sendEmail(email, emailTitle, emailText)  
